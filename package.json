@@ -46,5 +46,5 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.13.2"
   },
-  "homepage": "https://marekgrzegorczyk.github.io/WORK_IN_PROGRESS_weather_app"
+  "homepage": "https://marekgrzegorczyk.github.io/weather_app"
 }
