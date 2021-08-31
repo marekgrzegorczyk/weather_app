@@ -9,8 +9,12 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
   box-sizing: border-box;
 }
 
-.main {
+body {
   background: no-repeat fixed $background;
+  height: 100vh;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;

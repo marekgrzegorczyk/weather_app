@@ -81,6 +81,14 @@ function App() {
     return (
         <>
             <main className="main">
+                {/*<div id='map' style='width: 400px; height: 300px;'></div>*/}
+                {/*<script>*/}
+                {/*    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZ29yaTkzIiwiYSI6ImNrdDBheGtxZjA3YTkydnA5dXJoMTgxNW0ifQ.LgoiMPvL69tcym28bTtBdw';*/}
+                {/*    var map = new mapboxgl.Map({*/}
+                {/*    container: 'map',*/}
+                {/*    style: 'mapbox://styles/mapbox/streets-v11'*/}
+                {/*});*/}
+                {/*</script>*/}
                 <div className="search-box">
                     <div className="search-box-container">
                         <input
