@@ -214,3 +214,13 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
   margin: 10px 0;
 }
 
+@media only screen and (max-width: 600px) {
+  .future-forecast__single-day {
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+  }
+}
