@@ -8,11 +8,9 @@ export const ChoosenCity = ({weather, slicedDate, tempSymbol}) => {
                 <img className="weather_icon__big"
                      src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                      alt="weather_icon"/>
-                <div className="location-box__section">
                     <div
                         className="location-box__location__big ">{weather.name}, {weather.sys.country}</div>
                     <div className="location-box__date__big">{slicedDate}</div>
-                </div>
             </div>
             <div className="info-box">
                 <div className="splitter">
