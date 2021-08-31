@@ -1,7 +1,7 @@
 WORK IN PROGRESS
 
 LINK:
-https://marekgrzegorczyk.github.io/weather_app/
+https://marekgrzegorczyk.github.io/weather_app
 
 ## Available Scripts
 
