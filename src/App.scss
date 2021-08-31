@@ -25,7 +25,7 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 72px 0 10px 0;
+  margin: 72px 0 0 0;
 }
 
 .wrapper {
@@ -55,7 +55,7 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
 }
 
 .search-box-container {
-  width: 100%;
+  width: 90%;
   max-width: 1000px;
   display: flex;
   justify-content: space-evenly;
@@ -90,7 +90,7 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
   font-size: 1.5rem;
   background: $search-bar-background;
   border: 2px solid white;
-  border-radius: 50%;
+  border-radius: 15px;
 }
 
 .unit-button-active{

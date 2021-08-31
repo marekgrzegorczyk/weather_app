@@ -13,6 +13,9 @@ function App() {
     const [weather, setWeather] = useState('');
     const [eightDayWeather, setEightDayWeather] = useState('');
     const [fourCities, setFourCities] = useState('')
+    const [isActive1,setIsActive1] = useState('')
+    const [isActive2,setIsActive2] = useState('')
+
 
     const api = {
         key: "3f6a2c018fef788f6169811808fd60d3",
@@ -54,6 +57,8 @@ function App() {
     const changeUnitFahrenheit = () => {
         setTemperature("imperial")
         setTempSymbol("°F")
+        setIsActive1('true')
+        setIsActive2("false")
         fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=imperial&appid=${api.key}`)
             .then((result4) => result4.json())
             .then((data4) => {
@@ -64,6 +69,8 @@ function App() {
     const changeUnitCelsius = () => {
         setTemperature("metric")
         setTempSymbol("°C")
+        setIsActive1("false")
+        setIsActive2('')
         fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
             .then((result4) => result4.json())
             .then((data4) => {
@@ -84,8 +91,8 @@ function App() {
                             value={query}
                             onKeyPress={search}
                         />
-                        <button onClick={changeUnitFahrenheit} className="unit-button ">°F</button>
-                        <button onClick={changeUnitCelsius} className="unit-button unit-button-active">°C</button>
+                        <button onClick={changeUnitFahrenheit} className={`unit-button ${isActive2 ? "unit-button-active" : ""}`}>°F</button>
+                        <button onClick={changeUnitCelsius} className={`unit-button ${isActive2 ? "" : "unit-button-active"}`}>°C</button>
                     </div>
                 </div>
                 <div className="container">
