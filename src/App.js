@@ -108,7 +108,9 @@ function App() {
                                     <p className="future-forecast__header"
                                        style={{fontSize: "30px", textAlign: "center"}}>7 Day Forecast
                                         for {weather.name} </p>
+                                    <div className="future-forecast__wrapper">
                                     {Arr}
+                                    </div>
                                 </div>) : ('')}
                         </div>
                     ) : (

@@ -98,7 +98,7 @@ body {
   border-radius: 15px;
 }
 
-.unit-button-active{
+.unit-button-active {
   color: black;
   background: white;
 }
@@ -135,7 +135,7 @@ body {
 }
 
 .location-box__location__big {
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -190,15 +190,16 @@ body {
 
 .future-forecast__single-day {
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid white;
 }
+
 .future-forecast__single-day:last-child {
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,30 +223,67 @@ body {
   margin: 10px 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 600px) {
   .location-box__location__big {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
   }
 
   .future-forecast__single-day {
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid white;
   }
-
   .future-forecast__single-day:last-child {
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .future-forecast {
+    border-radius: 15px;
+    background: $box-gradient;
+    padding: 10px 20px 10px 20px;
+    margin: 10px 0;
+    color: white;
   }
 
+  .future-forecast__wrapper {
+    display: flex;
+  }
 
+  .future-forecast__header {
+    font-size: 3rem;
+    margin: 10px 0;
+  }
+
+  .future-forecast__single-day {
+    border: none;
+    border-right: 1px solid white;
+    width: 100%;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  .future-forecast__single-day:last-child {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  .future-forecast__2ndsection {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
 
 }
