@@ -1,6 +1,11 @@
 import React from "react";
 
-export const ChoosenCity = ({weather, slicedDate, tempSymbol}) => {
+export const ChoosenCity = ({weather, slicedDate, tempSymbol,conversion,add}) => {
+
+    const multiply = () => {
+        return ((parseInt(Math.round(weather.main.temp)) * conversion)+ add)
+
+    }
 
     return (
         <>
@@ -19,7 +24,7 @@ export const ChoosenCity = ({weather, slicedDate, tempSymbol}) => {
                 </div>
                 <div className="splitter">
                     <div>Temperature</div>
-                    <div>{Math.round(weather.main.temp)}{tempSymbol}</div>
+                    <div>{multiply()}{tempSymbol}</div>
                 </div>
                 <div className="splitter">
                     <div>Pressure</div>

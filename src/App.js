@@ -7,34 +7,39 @@ import {ChoosenCity} from "./components/ChoosenCity/ChoosenCity";
 
 function App() {
     const [query, setQuery] = useState('');
-    const [temperature, setTemperature] = useState("metric")
+    const [conversion, setConversion] = useState(1)
+    const [add,setAdd] = useState(0)
     const [tempSymbol, setTempSymbol] = useState("°C")
     const [weather, setWeather] = useState('');
     const [eightDayWeather, setEightDayWeather] = useState('');
     const [fourCities, setFourCities] = useState('')
     const [isActive,setIsActive] = useState('')
 
-    const Arr = []
-    for (let i=1; i < 8; i++) {
-        Arr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
-                              incrementedDay={i} tempSymbol={tempSymbol}/>) }
-    let date = String(new window.Date());
-    const slicedDate = date.slice(3, 21);
 
     const api = {
         key: "3f6a2c018fef788f6169811808fd60d3",
         url: "api.openweathermap.org/data/2.5/"
     };
 
+
+
+    useEffect(() => {
+        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
+            .then((result4) => result4.json())
+            .then((data4) => {
+                setFourCities(data4)
+            })
+    }, [])
+
     const search = event => {
         if (event.key === "Enter") {
-            fetch(`https://${api.url}weather?q=${query}&units=${temperature}&appid=${api.key}`)
+            fetch(`https://${api.url}weather?q=${query}&units=metric&appid=${api.key}`)
                 .then((result) => result.json())
                 .then(result => {
                     setQuery('')
                     setWeather(result)
                     return fetch(
-                        `https://${api.url}onecall?lat=${result.coord.lat}7&lon=${result.coord.lon}&exclude=minutely,hourly&units=${temperature}&appid=3f6a2c018fef788f6169811808fd60d3`
+                        `https://${api.url}onecall?lat=${result.coord.lat}7&lon=${result.coord.lon}&exclude=minutely,hourly&units=metric&appid=3f6a2c018fef788f6169811808fd60d3`
                     );
                 })
                 .then((result8) => result8.json())
@@ -45,34 +50,52 @@ function App() {
     };
 
     const changeUnitFahrenheit = () => {
-        setTemperature("imperial")
+        setConversion(2)
+        setAdd(32)
         setTempSymbol("°F")
         setIsActive("false")
-        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=imperial&appid=${api.key}`)
-            .then((result4) => result4.json())
-            .then((data4) => {
-                setFourCities(data4)
-            })
     }
 
     const changeUnitCelsius = () => {
-        setTemperature("metric")
+        setConversion(1)
+        setAdd(0)
         setTempSymbol("°C")
         setIsActive('')
-        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
-            .then((result4) => result4.json())
-            .then((data4) => {
-                setFourCities(data4)
-            })
     }
 
-    useEffect(() => {
-        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=${temperature}&appid=${api.key}`)
-            .then((result4) => result4.json())
-            .then((data4) => {
-                setFourCities(data4)
-            })
-    }, [])
+    const Arr = []
+    for (let i=1; i < 8; i++) {
+        Arr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
+                              incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion} add={add}/>) }
+    let date = String(new window.Date());
+    const slicedDate = date.slice(3, 21);
+
+
+
+
+    // const changeUnitFahrenheit = () => {
+    //     setConversion("imperial")
+    //     setTempSymbol("°F")
+    //     setIsActive("false")
+    //     fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=imperial&appid=${api.key}`)
+    //         .then((result4) => result4.json())
+    //         .then((data4) => {
+    //             setFourCities(data4)
+    //         })
+    // }
+    //
+    // const changeUnitCelsius = () => {
+    //     setConversion("metric")
+    //     setTempSymbol("°C")
+    //     setIsActive('')
+    //     fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
+    //         .then((result4) => result4.json())
+    //         .then((data4) => {
+    //             setFourCities(data4)
+    //         })
+    // }
+
+
 
     return (
         <>
@@ -102,7 +125,7 @@ function App() {
                 <div className="container">
                     {(typeof weather.main !== "undefined") ? (
                         <div className="wrapper">
-                            <ChoosenCity weather={weather} slicedDate={slicedDate} tempSymbol={tempSymbol}/>
+                            <ChoosenCity weather={weather} slicedDate={slicedDate} tempSymbol={tempSymbol} conversion={conversion} add={add}/>
                             {(typeof eightDayWeather.current !== "undefined") ? (
                                 <div className="future-forecast shadow">
                                     <p className="future-forecast__header"
@@ -116,10 +139,10 @@ function App() {
                     ) : (
                         (typeof fourCities.list !== "undefined") ? (
                             <>
-                                <ExampleCity fourCities={fourCities} number={0} tempSymbol={tempSymbol}/>
-                                <ExampleCityReversed fourCities={fourCities} number={1} tempSymbol={tempSymbol}/>
-                                <ExampleCity fourCities={fourCities} number={2} tempSymbol={tempSymbol}/>
-                                <ExampleCityReversed fourCities={fourCities} number={3} tempSymbol={tempSymbol}/>
+                                <ExampleCity fourCities={fourCities} number={0} tempSymbol={tempSymbol} conversion={conversion} add={add}/>
+                                <ExampleCityReversed fourCities={fourCities} number={1} tempSymbol={tempSymbol} conversion={conversion} add={add}/>
+                                <ExampleCity fourCities={fourCities} number={2} tempSymbol={tempSymbol} conversion={conversion} add={add}/>
+                                <ExampleCityReversed fourCities={fourCities} number={3} tempSymbol={tempSymbol} conversion={conversion} add={add}/>
                             </>
                         ) : (""))}
                 </div>
