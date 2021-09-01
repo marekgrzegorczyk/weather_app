@@ -4,6 +4,7 @@ import {ForecastDay} from "./components/ForecastDay/ForecastDay"
 import {ExampleCity} from "./components/ExampleCity/ExampleCity";
 import {ExampleCityReversed} from "./components/ExampleCityReversed/ExampleCityReversed";
 import {ChoosenCity} from "./components/ChoosenCity/ChoosenCity";
+import {ForecastHour} from "./components/ForecastHour/ForecastHour";
 
 function App() {
     const [query, setQuery] = useState('');
@@ -39,7 +40,7 @@ function App() {
                     setQuery('')
                     setWeather(result)
                     return fetch(
-                        `https://${api.url}onecall?lat=${result.coord.lat}7&lon=${result.coord.lon}&exclude=minutely,hourly&units=metric&appid=3f6a2c018fef788f6169811808fd60d3`
+                        `https://${api.url}onecall?lat=${result.coord.lat}7&lon=${result.coord.lon}&exclude=minutely&units=metric&appid=3f6a2c018fef788f6169811808fd60d3`
                     );
                 })
                 .then((result8) => result8.json())
@@ -134,7 +135,7 @@ function App() {
                                     <div className="future-forecast__wrapper">
                                     {Arr}
                                     </div>
-                                </div>) : ('')}
+                                </div>) : (<div className="future-forecast" style={{textAlign: "center"}}>There's no daily forecast for {weather.name}. </div>)}
                         </div>
                     ) : (
                         (typeof fourCities.list !== "undefined") ? (
