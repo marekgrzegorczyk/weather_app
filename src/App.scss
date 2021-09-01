@@ -196,6 +196,14 @@ body {
   align-items: center;
   border-bottom: 1px solid white;
 }
+.future-forecast__single-day:last-child {
+  width: 100%;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
 
 .future-forecast__section {
   display: flex;
@@ -208,10 +216,6 @@ body {
   align-items: center;
 }
 
-.last {
-  border: none;
-}
-
 .location-box__temp {
   font-size: 4rem;
   font-weight: bold;
@@ -219,6 +223,11 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+  .location-box__location__big {
+    font-size: 3rem;
+    text-align: center;
+  }
+
   .future-forecast__single-day {
     width: 100%;
     font-size: 1rem;
@@ -227,4 +236,16 @@ body {
     align-items: center;
     border-bottom: 1px solid white;
   }
+
+  .future-forecast__single-day:last-child {
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+  }
+
+
+
 }

@@ -6,35 +6,25 @@ import {ExampleCityReversed} from "./components/ExampleCityReversed/ExampleCityR
 import {ChoosenCity} from "./components/ChoosenCity/ChoosenCity";
 
 function App() {
-
     const [query, setQuery] = useState('');
     const [temperature, setTemperature] = useState("metric")
     const [tempSymbol, setTempSymbol] = useState("°C")
     const [weather, setWeather] = useState('');
     const [eightDayWeather, setEightDayWeather] = useState('');
     const [fourCities, setFourCities] = useState('')
-    const [isActive1,setIsActive1] = useState('')
-    const [isActive2,setIsActive2] = useState('')
+    const [isActive,setIsActive] = useState('')
 
+    const Arr = []
+    for (let i=1; i < 8; i++) {
+        Arr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
+                              incrementedDay={i} tempSymbol={tempSymbol}/>) }
+    let date = String(new window.Date());
+    const slicedDate = date.slice(3, 21);
 
     const api = {
         key: "3f6a2c018fef788f6169811808fd60d3",
         url: "api.openweathermap.org/data/2.5/"
     };
-
-
-    useEffect(() => {
-
-        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=${temperature}&appid=${api.key}`)
-            .then((result4) => result4.json())
-            .then((data4) => {
-                setFourCities(data4)
-            })
-    }, [])
-
-
-    let date = String(new window.Date());
-    const slicedDate = date.slice(3, 21);
 
     const search = event => {
         if (event.key === "Enter") {
@@ -57,8 +47,7 @@ function App() {
     const changeUnitFahrenheit = () => {
         setTemperature("imperial")
         setTempSymbol("°F")
-        setIsActive1('true')
-        setIsActive2("false")
+        setIsActive("false")
         fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=imperial&appid=${api.key}`)
             .then((result4) => result4.json())
             .then((data4) => {
@@ -69,14 +58,21 @@ function App() {
     const changeUnitCelsius = () => {
         setTemperature("metric")
         setTempSymbol("°C")
-        setIsActive1("false")
-        setIsActive2('')
+        setIsActive('')
         fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
             .then((result4) => result4.json())
             .then((data4) => {
                 setFourCities(data4)
             })
     }
+
+    useEffect(() => {
+        fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=${temperature}&appid=${api.key}`)
+            .then((result4) => result4.json())
+            .then((data4) => {
+                setFourCities(data4)
+            })
+    }, [])
 
     return (
         <>
@@ -99,8 +95,8 @@ function App() {
                             value={query}
                             onKeyPress={search}
                         />
-                        <button onClick={changeUnitFahrenheit} className={`unit-button ${isActive2 ? "unit-button-active" : ""}`}>°F</button>
-                        <button onClick={changeUnitCelsius} className={`unit-button ${isActive2 ? "" : "unit-button-active"}`}>°C</button>
+                        <button onClick={changeUnitFahrenheit} className={`unit-button ${isActive ? "unit-button-active" : ""}`}>°F</button>
+                        <button onClick={changeUnitCelsius} className={`unit-button ${isActive ? "" : "unit-button-active"}`}>°C</button>
                     </div>
                 </div>
                 <div className="container">
@@ -112,16 +108,7 @@ function App() {
                                     <p className="future-forecast__header"
                                        style={{fontSize: "30px", textAlign: "center"}}>7 Day Forecast
                                         for {weather.name} </p>
-                                    <ForecastDay eightDayWeather={eightDayWeather} incrementedDate={1}
-                                                 incrementedDay={1} tempSymbol={tempSymbol}/>
-                                    <ForecastDay eightDayWeather={eightDayWeather} incrementedDate={2}
-                                                 incrementedDay={2} tempSymbol={tempSymbol}/>
-                                    <ForecastDay eightDayWeather={eightDayWeather} incrementedDate={3}
-                                                 incrementedDay={3} tempSymbol={tempSymbol}/>
-                                    <ForecastDay eightDayWeather={eightDayWeather} incrementedDate={4}
-                                                 incrementedDay={4} tempSymbol={tempSymbol}/>
-                                    <ForecastDay eightDayWeather={eightDayWeather} incrementedDate={5}
-                                                 incrementedDay={5} tempSymbol={tempSymbol}/>
+                                    {Arr}
                                 </div>) : ('')}
                         </div>
                     ) : (

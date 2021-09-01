@@ -5,7 +5,7 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
     let nextDate = new Date();
     nextDate.setDate(nextDate.getDate() + incrementedDate);
     const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    const finalDate = nextDate.toLocaleDateString("en-US", options)
+    const finalDate = nextDate.toLocaleDateString("en-US", options).slice(0,3)
 
     return (
         <>
