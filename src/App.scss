@@ -39,7 +39,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-
+.icon {
+  transform: rotate(180deg);
+}
 .splitter {
   display: flex;
   justify-content: space-between;
