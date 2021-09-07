@@ -84,7 +84,7 @@ function App() {
     const TwelveHourArr = []
     for (let i = 1; i < 13; i++) {
         const epochDate = eightDayWeather.hourly[i].dt
-        const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10,16);
+        const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10, 16);
         TwelveHourArr.push(<ForecastHour humanDate={humanDate} eightDayWeather={eightDayWeather}
                                          incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion}
                                          add={add}/>)
@@ -102,14 +102,6 @@ function App() {
     return (
         <>
             <main className="main">
-                {/*<div id='map' style='width: 400px; height: 300px;'></div>*/}
-                {/*<script>*/}
-                {/*    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZ29yaTkzIiwiYSI6ImNrdDBheGtxZjA3YTkydnA5dXJoMTgxNW0ifQ.LgoiMPvL69tcym28bTtBdw';*/}
-                {/*    var map = new mapboxgl.Map({*/}
-                {/*    container: 'map',*/}
-                {/*    style: 'mapbox://styles/mapbox/streets-v11'*/}
-                {/*});*/}
-                {/*</script>*/}
                 <div className="search-box">
                     <div className="search-box-container">
                         <button className="unit-button icon" style={{margin: "0 5px 0 0"}} onClick={getBack}>

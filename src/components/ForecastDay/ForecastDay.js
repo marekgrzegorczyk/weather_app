@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, tempSymbol,conversion,add}) => {
+export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, tempSymbol, conversion, add}) => {
 
     let nextDate = new Date();
     nextDate.setDate(nextDate.getDate() + incrementedDate);
@@ -8,26 +8,24 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
     const finalDate = nextDate.toLocaleDateString("en-US", options).slice(0, 3)
 
     const multiply = () => {
-        return ((parseInt(Math.round(eightDayWeather.daily[incrementedDay].temp.day)) * conversion)+ add)
-
+        return ((parseInt(Math.round(eightDayWeather.daily[incrementedDay].temp.day)) * conversion) + add)
     }
-
 
     return (
         <>
-                <div className="future-forecast-daily__single-day">
-                    <div className="future-forecast-daily__section">
-                        <div>{finalDate}</div>
-                        <div
-                            style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
-                    </div>
-                    <div className="future-forecast-daily__2ndsection">
-                        <div>{multiply()}{tempSymbol}</div>
-                        <img
-                            src={`https://openweathermap.org/img/wn/${eightDayWeather.daily[incrementedDay].weather[0].icon}@2x.png`}
-                            alt="weather_icon"/>
-                    </div>
+            <div className="future-forecast-daily__single-day">
+                <div className="future-forecast-daily__section">
+                    <div>{finalDate}</div>
+                    <div
+                        style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
                 </div>
+                <div className="future-forecast-daily__2ndsection">
+                    <div>{multiply()}{tempSymbol}</div>
+                    <img
+                        src={`https://openweathermap.org/img/wn/${eightDayWeather.daily[incrementedDay].weather[0].icon}@2x.png`}
+                        alt="weather_icon"/>
+                </div>
+            </div>
         </>
     )
 }
