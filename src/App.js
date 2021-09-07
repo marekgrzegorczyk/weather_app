@@ -82,14 +82,13 @@ function App() {
     }
 
     const TwelveHourArr = []
-    for (let i = 1; i < 13; i++) {
-        const epochDate = eightDayWeather.hourly[i].dt
+    for (let j = 1; j < 13; j++) {
+        const epochDate = 1631019600
         const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10, 16);
         TwelveHourArr.push(<ForecastHour humanDate={humanDate} eightDayWeather={eightDayWeather}
-                                         incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion}
+                                         incrementedDay={j} tempSymbol={tempSymbol} conversion={conversion}
                                          add={add}/>)
     }
-
     const SevenDayArr = []
     for (let i = 1; i < 8; i++) {
         SevenDayArr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
