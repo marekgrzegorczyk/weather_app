@@ -11,8 +11,7 @@ export const ForecastHour = ({eightDayWeather, incrementedDay, tempSymbol, conve
 
     return (
         <>
-            <div style={{marginBottom: "10px"}}
-                 className="future-forecast-daily__single-day">
+            <div className="future-forecast-daily__single-day">
                 <div className="future-forecast-daily__section">
                     <div>{humanDate}</div>
                     <div
@@ -24,7 +23,9 @@ export const ForecastHour = ({eightDayWeather, incrementedDay, tempSymbol, conve
                         {tempSymbol}</div>
                     <img
                         src={`https://openweathermap.org/img/wn/${eightDayWeather.hourly[incrementedDay].weather[0].icon}@2x.png`}
-                        alt="weather_icon"/>
+                        alt="weather_icon"
+                        className="weather_icon"
+                    />
                 </div>
             </div>
         </>

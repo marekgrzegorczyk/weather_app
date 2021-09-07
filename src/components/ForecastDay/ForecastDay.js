@@ -23,7 +23,9 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
                     <div>{multiply()}{tempSymbol}</div>
                     <img
                         src={`https://openweathermap.org/img/wn/${eightDayWeather.daily[incrementedDay].weather[0].icon}@2x.png`}
-                        alt="weather_icon"/>
+                        alt="weather_icon"
+                        className="weather_icon"
+                    />
                 </div>
             </div>
         </>
