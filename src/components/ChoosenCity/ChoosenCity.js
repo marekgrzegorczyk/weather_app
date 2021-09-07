@@ -1,11 +1,14 @@
 import React from "react";
 
-export const ChoosenCity = ({weather, slicedDate, tempSymbol,conversion,add}) => {
+export const ChoosenCity = ({weather, tempSymbol,conversion,add}) => {
 
     const multiply = () => {
         return ((parseInt(Math.round(weather.main.temp)) * conversion)+ add)
 
     }
+
+    let date = String(new window.Date());
+    const slicedDate = date.slice(3, 21);
 
     return (
         <>

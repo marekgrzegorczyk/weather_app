@@ -7,6 +7,7 @@ import {ChoosenCity} from "./components/ChoosenCity/ChoosenCity";
 import {ForecastHour} from "./components/ForecastHour/ForecastHour";
 
 function App() {
+
     const [query, setQuery] = useState('');
     const [conversion, setConversion] = useState(1)
     const [add, setAdd] = useState(0)
@@ -24,10 +25,19 @@ function App() {
     useEffect(() => {
         fetch(`https://${api.url}group?id=2643743,2950159,2988507,3117735&units=metric&appid=${api.key}`)
             .then((result4) => result4.json())
-            .then((data4) => {
-                setFourCities(data4)
+            .then((result4) => {
+                setFourCities(result4)
             })
     }, [])
+
+    // useEffect(()=> {
+    //     eightDayWeather?.hourly?.map((x, index)=> {
+    //         const humanDate = new Date(x.dt * 1000).toLocaleString().slice(10, 16);
+    //         TwelveHourArr.push(<ForecastHour humanDate={humanDate} index={index} x={x}
+    //                                          tempSymbol={tempSymbol} conversion={conversion}
+    //                                          add={add}/>)
+    //     })
+    // },[eightDayWeather])
 
     const search = event => {
         if (event.key === "Enter") {
@@ -47,7 +57,6 @@ function App() {
         }
     };
     const search2 = city => {
-        console.log("aaaaaaaa")
         fetch(`https://${api.url}weather?q=${city}&units=metric&appid=${api.key}`)
             .then((result) => result.json())
             .then(result => {
@@ -81,22 +90,18 @@ function App() {
         setWeather("")
     }
 
-    const TwelveHourArr = []
-    for (let j = 1; j < 13; j++) {
-        const epochDate = 1631019600
-        const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10, 16);
-        TwelveHourArr.push(<ForecastHour humanDate={humanDate} eightDayWeather={eightDayWeather}
-                                         incrementedDay={j} tempSymbol={tempSymbol} conversion={conversion}
-                                         add={add}/>)
-    }
     const SevenDayArr = []
     for (let i = 1; i < 8; i++) {
         SevenDayArr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
                                       incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion} add={add}/>)
     }
 
-    let date = String(new window.Date());
-    const slicedDate = date.slice(3, 21);
+    const TwelveHourArr = []
+    for (let j = 1; j < 13; j++) {
+        TwelveHourArr.push(<ForecastHour eightDayWeather={eightDayWeather}
+                                         incrementedDay={j} tempSymbol={tempSymbol} conversion={conversion}
+                                         add={add}/>)
+    }
 
     return (
         <>
@@ -125,7 +130,7 @@ function App() {
                 <div className="container">
                     {(typeof weather.main !== "undefined") ? (
                         <div className="wrapper">
-                            <ChoosenCity weather={weather} slicedDate={slicedDate} tempSymbol={tempSymbol}
+                            <ChoosenCity weather={weather} tempSymbol={tempSymbol}
                                          conversion={conversion} add={add}/>
                             {(typeof eightDayWeather.current !== "undefined") ? (
                                 <div>
@@ -150,19 +155,19 @@ function App() {
                     ) : (
                         (typeof fourCities.list !== "undefined") ? (
                             <>
-                                <div onClick={e => search2("London")} style={{width: "100%"}}>
+                                <div onClick={() => search2("London")} style={{width: "100%"}}>
                                     <ExampleCity fourCities={fourCities} number={0} tempSymbol={tempSymbol}
                                                  conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={e => search2("Berlin")} style={{width: "100%"}}>
+                                <div onClick={() => search2("Berlin")} style={{width: "100%"}}>
                                     <ExampleCityReversed fourCities={fourCities} number={1} tempSymbol={tempSymbol}
                                                          conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={e => search2("Paris")} style={{width: "100%"}}>
+                                <div onClick={() => search2("Paris")} style={{width: "100%"}}>
                                     <ExampleCity fourCities={fourCities} number={2} tempSymbol={tempSymbol}
                                                  conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={e => search2("Madrid")} style={{width: "100%"}}>
+                                <div onClick={() => search2("Madrid")} style={{width: "100%"}}>
                                     <ExampleCityReversed fourCities={fourCities} number={3} tempSymbol={tempSymbol}
                                                          conversion={conversion} add={add}/>
                                 </div>

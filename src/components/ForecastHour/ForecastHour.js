@@ -1,10 +1,14 @@
 import React from "react";
 
-export const ForecastHour = ({humanDate, eightDayWeather, incrementedDay, tempSymbol, conversion, add}) => {
+export const ForecastHour = ({eightDayWeather, incrementedDay, tempSymbol, conversion, add}) => {
 
     const multiply = () => {
         return ((parseInt(Math.round(eightDayWeather.hourly[incrementedDay].temp)) * conversion) + add)
     }
+
+    const epochDate = eightDayWeather.hourly[incrementedDay].dt
+    const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10, 16);
+
     return (
         <>
             <div style={{marginBottom: "10px"}}
