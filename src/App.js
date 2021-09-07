@@ -81,11 +81,21 @@ function App() {
         setWeather("")
     }
 
-    const Arr = []
-    for (let i = 1; i < 8; i++) {
-        Arr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
-                              incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion} add={add}/>)
+    const TwelveHourArr = []
+    for (let i = 1; i < 13; i++) {
+        const epochDate = eightDayWeather.hourly[i].dt
+        const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10,16);
+        TwelveHourArr.push(<ForecastHour humanDate={humanDate} eightDayWeather={eightDayWeather}
+                                         incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion}
+                                         add={add}/>)
     }
+
+    const SevenDayArr = []
+    for (let i = 1; i < 8; i++) {
+        SevenDayArr.push(<ForecastDay eightDayWeather={eightDayWeather} incrementedDate={i}
+                                      incrementedDay={i} tempSymbol={tempSymbol} conversion={conversion} add={add}/>)
+    }
+
     let date = String(new window.Date());
     const slicedDate = date.slice(3, 21);
 
@@ -102,7 +112,8 @@ function App() {
                 {/*</script>*/}
                 <div className="search-box">
                     <div className="search-box-container">
-                        <button className="unit-button icon" style={{margin:"0 5px 0 0"}} onClick={getBack}><span>&#10141;</span>
+                        <button className="unit-button icon" style={{margin: "0 5px 0 0"}} onClick={getBack}>
+                            <span>&#10141;</span>
                         </button>
                         <input
                             className="search-box__search-bar"
@@ -126,14 +137,22 @@ function App() {
                             <ChoosenCity weather={weather} slicedDate={slicedDate} tempSymbol={tempSymbol}
                                          conversion={conversion} add={add}/>
                             {(typeof eightDayWeather.current !== "undefined") ? (
-                                <div className="future-forecast shadow">
-                                    <p className="future-forecast__header"
-                                       style={{fontSize: "30px", textAlign: "center"}}>7 Day Forecast
-                                        for {weather.name} </p>
-                                    <div className="future-forecast__wrapper">
-                                        {Arr}
+                                <div>
+                                    <div className="future-forecast-daily shadow">
+                                        <p className="future-forecast-daily__header">12 Hour Forecast</p>
+                                        <div className="future-forecast-daily__wrapper">
+                                            {TwelveHourArr}
+                                        </div>
                                     </div>
-                                </div>) : (
+                                    <div className="future-forecast-daily shadow">
+                                        <p className="future-forecast-daily__header">7 Day Forecast
+                                            for {weather.name} </p>
+                                        <div className="future-forecast-daily__wrapper">
+                                            {SevenDayArr}
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
                                 <div className="future-forecast" style={{textAlign: "center"}}>There's no daily forecast
                                     for {weather.name}. </div>)}
                         </div>
