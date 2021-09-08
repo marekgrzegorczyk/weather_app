@@ -30,15 +30,6 @@ function App() {
             })
     }, [])
 
-    // useEffect(()=> {
-    //     eightDayWeather?.hourly?.map((x, index)=> {
-    //         const humanDate = new Date(x.dt * 1000).toLocaleString().slice(10, 16);
-    //         TwelveHourArr.push(<ForecastHour humanDate={humanDate} index={index} x={x}
-    //                                          tempSymbol={tempSymbol} conversion={conversion}
-    //                                          add={add}/>)
-    //     })
-    // },[eightDayWeather])
-
     const search = event => {
         if (event.key === "Enter") {
             fetch(`https://${api.url}weather?q=${query}&units=metric&appid=${api.key}`)
@@ -55,7 +46,8 @@ function App() {
                     setEightDayWeather(result8);
                 });
         }
-    };
+    }
+
     const search2 = city => {
         fetch(`https://${api.url}weather?q=${city}&units=metric&appid=${api.key}`)
             .then((result) => result.json())
@@ -70,7 +62,7 @@ function App() {
             .then((result8) => {
                 setEightDayWeather(result8);
             });
-    };
+    }
 
     const changeUnitFahrenheit = () => {
         setConversion(2)
