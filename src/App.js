@@ -127,7 +127,7 @@ function App() {
                             {(typeof eightDayWeather.current !== "undefined") ? (
                                 <div>
                                     <div className="future-forecast-daily shadow">
-                                        <p className="future-forecast-daily__header">12 Hour Forecast</p>
+                                        <p className="future-forecast-daily__header">12 Hour Forecast for {weather.name}</p>
                                         <div className="future-forecast-daily__wrapper">
                                             {TwelveHourArr}
                                         </div>

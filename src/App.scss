@@ -24,7 +24,7 @@ body {
   width: 90%;
   max-width: 1000px;
   border-radius: 15px;
-  font-size: 30px;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -145,8 +145,11 @@ body {
 }
 
 .location-box__location__big {
-  font-size: 3rem;
+  font-size: 2.4rem;
   text-align: center;
+}
+.location-box__date__big{
+  font-size: 1.7rem;
 }
 
 .reversed {
@@ -216,6 +219,7 @@ body {
 
 .future-forecast-daily__single-day:last-child {
   width: 100%;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -244,6 +248,9 @@ body {
   .location-box__location__big {
     font-size: 4rem;
     text-align: center;
+  }
+  .location-box__date__big{
+    font-size: 2rem;
   }
 
   .future-forecast-daily__single-day {
@@ -310,7 +317,7 @@ body {
   }
   .future-forecast-daily__single-day:last-child {
     width: 100%;
-    font-size: 1.3999rem;
+    font-size: 1.6rem;
   }
 
   .future-forecast-daily__2ndsection {

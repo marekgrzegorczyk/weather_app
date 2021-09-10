@@ -15,7 +15,7 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
         <>
             <div className="future-forecast-daily__single-day">
                 <div className="future-forecast-daily__section">
-                    <div>{finalDate}</div>
+                    <div style={{marginBottom:"0.4rem"}}>{finalDate}</div>
                     <div
                         style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
                 </div>
