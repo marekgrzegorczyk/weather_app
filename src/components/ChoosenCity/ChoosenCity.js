@@ -26,8 +26,6 @@ export const ChoosenCity = ({weather, tempSymbol, conversion, add}) => {
                      alt="weather_icon"/>
                 <div
                     className="location-box__location__big ">{weather.name}, {weather.sys.country}</div>
-                <div className="location-box__date__big"><div>Sunrise: {sunriseDate}</div><div>Sunset: {sunsetDate}</div></div>
-
             </div>
             <div className="info-box">
                 <div className="splitter">
@@ -46,9 +44,17 @@ export const ChoosenCity = ({weather, tempSymbol, conversion, add}) => {
                     <div>Cloudiness</div>
                     <div>{weather.clouds.all}%</div>
                 </div>
-                <div className="splitter last">
+                <div className="splitter">
                     <div>Wind speed</div>
                     <div>{weather.wind.speed}km/h</div>
+                </div>
+                <div className="splitter">
+                    <div>Sunrise</div>
+                    <div>{sunriseDate}</div>
+                </div>
+                <div className="splitter last">
+                    <div>Sunset</div>
+                    <div>{sunsetDate}</div>
                 </div>
             </div>
         </>
