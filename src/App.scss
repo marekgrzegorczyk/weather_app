@@ -6,7 +6,8 @@ $box-gradient: linear-gradient(#046f94, #3493ad);
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;}
+  box-sizing: border-box;
+}
 
 body {
   background: no-repeat fixed $background;
@@ -23,7 +24,7 @@ body {
   width: 90%;
   max-width: 1000px;
   border-radius: 15px;
-  font-size: 30px;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -38,9 +39,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .icon {
   transform: rotate(180deg);
 }
+
 .splitter {
   display: flex;
   justify-content: space-between;
@@ -48,8 +51,7 @@ body {
   padding: 5px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-.last {
+.splitter:last-child {
   border: none;
 }
 
@@ -124,13 +126,12 @@ body {
   margin-bottom: 10px;
 }
 
-
 .location-box__big {
   background: $box-gradient;
   border-radius: 15px;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -138,14 +139,16 @@ body {
   margin-bottom: 10px;
 }
 
-
 .location-box__location {
   font-size: 1.5rem;
 }
 
 .location-box__location__big {
-  font-size: 3rem;
+  font-size: 2.4rem;
   text-align: center;
+}
+.location-box__date__big{
+  font-size: 1.7rem;
 }
 
 .reversed {
@@ -215,6 +218,7 @@ body {
 
 .future-forecast-daily__single-day:last-child {
   width: 100%;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,6 +247,9 @@ body {
   .location-box__location__big {
     font-size: 4rem;
     text-align: center;
+  }
+  .location-box__date__big{
+    font-size: 2rem;
   }
 
   .future-forecast-daily__single-day {
@@ -286,7 +293,7 @@ body {
     height: 1rem;
   }
   .future-forecast-daily__wrapper::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 15px;
   }
 
@@ -309,7 +316,7 @@ body {
   }
   .future-forecast-daily__single-day:last-child {
     width: 100%;
-    font-size: 1.3999rem;
+    font-size: 1.6rem;
   }
 
   .future-forecast-daily__2ndsection {

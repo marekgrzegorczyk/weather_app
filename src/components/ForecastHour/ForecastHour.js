@@ -7,7 +7,7 @@ export const ForecastHour = ({eightDayWeather, incrementedDay, tempSymbol, conve
     }
 
     const epochDate = eightDayWeather.hourly[incrementedDay].dt
-    const humanDate = new Date(epochDate * 1000).toLocaleString().slice(10, 16);
+    const humanDate = new Date(epochDate * 1000).toLocaleString().slice(-8).slice(0,5);
 
     return (
         <>
