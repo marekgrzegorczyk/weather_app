@@ -16,38 +16,48 @@ export const ChoosenCity = ({weather, tempSymbol, conversion, add}) => {
     return (
         <>
             <div className="location-box">
-                <div className="location-box__left">
-                    <div
-                        className="location-box__location__big ">{weather.name}, {weather.sys.country}
+                <div className="location-box__top">
+                    <div>
+                        <div style={{fontSize: "5vh",}}>{weather.name}, {weather.sys.country}
+                        </div>
+                        <div>
+                            <div style={{fontSize: "10vh", margin: "20px 0 5px 0"}}>{multiply()}{tempSymbol}</div>
+                        </div>
+                        <div style={{fontSize:"3vh",textTransform: "capitalize"}}>
+                            <div>{weather.weather[0].description}</div>
+                        </div>
                     </div>
                     <div>
-                        <div>{multiply()}{tempSymbol}</div>
+                        <img
+                            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                            alt="weather_icon"/>
                     </div>
-                    <div>
-                        <div>{weather.weather[0].description}</div>
+                </div>
+                <div className="location-box__bottom">
+                    <div className="location-box__desc">
+                        <div className="splitter">
+                            <p>Pressure</p>
+                            <div>{weather.main.pressure}hPa</div>
+                        </div>
+                        <div className="splitter">
+                            <p>Cloudiness</p>
+                            <div> {weather.clouds.all}%</div>
+                        </div>
+                        <div className="splitter">
+                            <p>Wind speed</p>
+                            <div> {weather.wind.speed}km/h</div>
+                        </div>
+                        <div className="splitter">
+                            <p>Sunrise</p>
+                            <div> {sunriseDate}</div>
+                        </div>
+                        <div className="splitter">
+                            <p>Sunset</p>
+                            <div> {sunsetDate}</div>
+                        </div>
                     </div>
+                </div>
 
-                    <div>
-                        <div>Pressure {weather.main.pressure}hPa</div>
-                    </div>
-                    <div>
-                        <div>Cloudiness {weather.clouds.all}%</div>
-                    </div>
-                    <div>
-                        <div>Wind speed {weather.wind.speed}km/h</div>
-                    </div>
-                    <div>
-                        <div>Sunrise {sunriseDate}</div>
-                    </div>
-                    <div>
-                        <div>Sunset {sunsetDate}</div>
-                    </div>
-                </div>
-                <div className="location-box__right">
-                    <img className="weather_icon"
-                         src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                         alt="weather_icon"/>
-                </div>
             </div>
 
         </>

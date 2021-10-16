@@ -63,18 +63,18 @@ function App() {
             });
     }
 
-    const changeUnitFahrenheit = () => {
-        setConversion(2)
-        setAdd(32)
-        setTempSymbol("°F")
-        setIsActive("false")
-    }
-
-    const changeUnitCelsius = () => {
-        setConversion(1)
-        setAdd(0)
-        setTempSymbol("°C")
-        setIsActive('')
+    const changeUnit = () => {
+        if (tempSymbol === "°C") {
+            setConversion(2)
+            setAdd(32)
+            setTempSymbol("°F")
+            setIsActive("false")
+        } else {
+            setConversion(1)
+            setAdd(0)
+            setTempSymbol("°C")
+            setIsActive('')
+        }
     }
 
     const getBack = () => {
@@ -110,12 +110,10 @@ function App() {
                             value={query}
                             onKeyPress={search}
                         />
-                        <button onClick={changeUnitFahrenheit}
-                                className={`unit-button ${isActive ? "unit-button-active" : ""}`}>°F
+                        <button onClick={changeUnit}
+                                className="unit-button">{isActive ? "°F" : "°C"}
                         </button>
-                        <button onClick={changeUnitCelsius}
-                                className={`unit-button ${isActive ? "" : "unit-button-active"}`}>°C
-                        </button>
+
                     </div>
                 </div>
                 <div className="container">
@@ -129,7 +127,8 @@ function App() {
                                     <div className="forecast-day">{SevenDayArr}</div>
                                 </div>
                             ) : (
-                                <div className="future-forecast" style={{textAlign: "center"}}>There's no daily forecast
+                                <div className="future-forecast not-found" style={{textAlign: "center",}}>There's no
+                                    daily forecast
                                     for {weather.name}. </div>)}
                         </>
                     ) : (
@@ -141,7 +140,7 @@ function App() {
                                 </div>
                                 <div onClick={() => search2("Berlin")} className="placeholder">
                                     <ExampleCity fourCities={fourCities} number={1} tempSymbol={tempSymbol}
-                                                         conversion={conversion} add={add}/>
+                                                 conversion={conversion} add={add}/>
                                 </div>
                                 <div onClick={() => search2("Paris")} className="placeholder">
                                     <ExampleCity fourCities={fourCities} number={2} tempSymbol={tempSymbol}
@@ -149,7 +148,7 @@ function App() {
                                 </div>
                                 <div onClick={() => search2("Madrid")} className="placeholder">
                                     <ExampleCity fourCities={fourCities} number={3} tempSymbol={tempSymbol}
-                                                         conversion={conversion} add={add}/>
+                                                 conversion={conversion} add={add}/>
                                 </div>
                             </div>
                         ) : (""))}

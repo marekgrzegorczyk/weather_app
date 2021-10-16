@@ -20,10 +20,8 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
                     alt="weather_icon"
                     className="weather_icon"
                 />
-                <div
-                    style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
-                <div>{multiply()}{tempSymbol}</div>
-
+                <div className="single-day__weather-desc" >{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
+                <div className="single-day__temp">{multiply()}{tempSymbol}</div>
             </div>
         </>
     )

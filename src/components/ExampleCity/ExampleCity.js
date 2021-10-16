@@ -16,7 +16,7 @@ export const ExampleCity = ({fourCities, number, tempSymbol, conversion, add}) =
                 <div>
                     <div style={{fontSize: '7vh'}}>{multiply()}{tempSymbol}</div>
                     <div>{fourCities.list[number].name}, {fourCities.list[number].sys.country}</div>
-                    <div className="location-box__city-name">{fourCities.list[number].weather[0].description}</div>
+                    <div style={{textTransform: "capitalize"}}>{fourCities.list[number].weather[0].description}</div>
                 </div>
             </div>
         </>
