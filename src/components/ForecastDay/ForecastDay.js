@@ -13,20 +13,17 @@ export const ForecastDay = ({eightDayWeather, incrementedDate, incrementedDay, t
 
     return (
         <>
-            <div className="future-forecast-daily__single-day">
-                <div className="future-forecast-daily__section">
-                    <div style={{marginBottom:"0.4rem"}}>{finalDate}</div>
-                    <div
-                        style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
-                </div>
-                <div className="future-forecast-daily__2ndsection">
-                    <div>{multiply()}{tempSymbol}</div>
-                    <img
-                        src={`https://openweathermap.org/img/wn/${eightDayWeather.daily[incrementedDay].weather[0].icon}@2x.png`}
-                        alt="weather_icon"
-                        className="weather_icon"
-                    />
-                </div>
+            <div className="single-day">
+                <div style={{marginBottom: "0.4rem"}}>{finalDate}</div>
+                <img
+                    src={`https://openweathermap.org/img/wn/${eightDayWeather.daily[incrementedDay].weather[0].icon}@2x.png`}
+                    alt="weather_icon"
+                    className="weather_icon"
+                />
+                <div
+                    style={{textTransform: "capitalize"}}>{eightDayWeather.daily[incrementedDay].weather[0].description}</div>
+                <div>{multiply()}{tempSymbol}</div>
+
             </div>
         </>
     )

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import './App.scss';
 import {ForecastDay} from "./components/ForecastDay/ForecastDay"
 import {ExampleCity} from "./components/ExampleCity/ExampleCity";
-import {ExampleCityReversed} from "./components/ExampleCityReversed/ExampleCityReversed";
 import {ChoosenCity} from "./components/ChoosenCity/ChoosenCity";
 import {ForecastHour} from "./components/ForecastHour/ForecastHour";
 
@@ -98,7 +97,7 @@ function App() {
     return (
         <>
             <main className="main">
-                <div className="search-box">
+                <div className="top-bar">
                     <div className="search-box-container">
                         <button className="unit-button icon" style={{margin: "0 5px 0 0"}} onClick={getBack}>
                             <span>&#10141;</span>
@@ -121,49 +120,38 @@ function App() {
                 </div>
                 <div className="container">
                     {(typeof weather.main !== "undefined") ? (
-                        <div className="wrapper">
+                        <>
                             <ChoosenCity weather={weather} tempSymbol={tempSymbol}
                                          conversion={conversion} add={add}/>
                             {(typeof eightDayWeather.current !== "undefined") ? (
                                 <div>
-                                    <div className="future-forecast-daily shadow">
-                                        <p className="future-forecast-daily__header">12 Hour Forecast for {weather.name}</p>
-                                        <div className="future-forecast-daily__wrapper">
-                                            {TwelveHourArr}
-                                        </div>
-                                    </div>
-                                    <div className="future-forecast-daily shadow">
-                                        <p className="future-forecast-daily__header">7 Day Forecast
-                                            for {weather.name} </p>
-                                        <div className="future-forecast-daily__wrapper">
-                                            {SevenDayArr}
-                                        </div>
-                                    </div>
+                                    <div className="forecast-hour">{TwelveHourArr} </div>
+                                    <div className="forecast-day">{SevenDayArr}</div>
                                 </div>
                             ) : (
                                 <div className="future-forecast" style={{textAlign: "center"}}>There's no daily forecast
                                     for {weather.name}. </div>)}
-                        </div>
+                        </>
                     ) : (
                         (typeof fourCities.list !== "undefined") ? (
-                            <>
-                                <div onClick={() => search2("London")} style={{width: "100%"}}>
+                            <div className="placeholder-wrapper">
+                                <div onClick={() => search2("London")} className="placeholder">
                                     <ExampleCity fourCities={fourCities} number={0} tempSymbol={tempSymbol}
                                                  conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={() => search2("Berlin")} style={{width: "100%"}}>
-                                    <ExampleCityReversed fourCities={fourCities} number={1} tempSymbol={tempSymbol}
+                                <div onClick={() => search2("Berlin")} className="placeholder">
+                                    <ExampleCity fourCities={fourCities} number={1} tempSymbol={tempSymbol}
                                                          conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={() => search2("Paris")} style={{width: "100%"}}>
+                                <div onClick={() => search2("Paris")} className="placeholder">
                                     <ExampleCity fourCities={fourCities} number={2} tempSymbol={tempSymbol}
                                                  conversion={conversion} add={add}/>
                                 </div>
-                                <div onClick={() => search2("Madrid")} style={{width: "100%"}}>
-                                    <ExampleCityReversed fourCities={fourCities} number={3} tempSymbol={tempSymbol}
+                                <div onClick={() => search2("Madrid")} className="placeholder">
+                                    <ExampleCity fourCities={fourCities} number={3} tempSymbol={tempSymbol}
                                                          conversion={conversion} add={add}/>
                                 </div>
-                            </>
+                            </div>
                         ) : (""))}
                 </div>
             </main>
