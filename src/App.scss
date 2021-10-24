@@ -208,17 +208,23 @@ body {
   justify-items: start;
   margin-top: 10px;
 }
+
 .single-day__weather-desc{
   text-transform: capitalize;
   grid-column: span 2;
 }
+
 .single-day__temp{
   display: flex;
 }
-.not-found{
+
+.not-found {
   text-align: center;
   color: white;
   border-top: $border-top;
   font-size: 4vh;
   padding-top: 50px;
+}
+.a {
+  color: black;
 }
